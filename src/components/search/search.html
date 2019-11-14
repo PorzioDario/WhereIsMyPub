@@ -1,0 +1,59 @@
+<ion-content class="background">
+  <div class="modal">
+    <ion-toolbar text-center>
+      <ion-title>
+          Search
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon name="md-close" margin></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+    <div class="modal-content">
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="searchParams.Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input type="text" [(ngModel)]="searchParams.City"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>State</ion-label>
+        <ion-input type="text" [(ngModel)]="searchParams.State"></ion-input>
+      </ion-item>
+      <ion-list radio-group>
+          <ion-list-header>
+            Match
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>All filters</ion-label>
+            <ion-radio [checked]="searchParams.Mode == 'AND'" value="AND" (ionSelect)="selectAll()"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Any filter</ion-label>
+            <ion-radio [checked]="searchParams.Mode == 'OR'" value="OR" (ionSelect)="selectAny()"></ion-radio>
+          </ion-item>
+        </ion-list>
+    </div>
+    <div class="modal-footer">
+      <ion-row>
+        <ion-col>
+          <button color="light" icon-start [disabled]="!filtersPopulated()" ion-button block (click)="onCleanClick()">
+            <ion-icon name="trash"></ion-icon>
+            Clear
+          </button>
+        </ion-col>
+        <ion-col>
+          <button color="primary" icon-start [disabled]="!filtersPopulated()" ion-button block (click)="onSearchClick()">
+            <ion-icon name="search"></ion-icon>
+            Search
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

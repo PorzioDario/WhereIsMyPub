@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar text-center>
+      <ion-title>
+        WhereIsMyPub
+      </ion-title>
+      <ion-buttons end>
+        <div [class]="isSearchMode ? 'searchOn' : ''">
+          <button ion-button icon-only (click)="onSearchClick()">
+            <ion-icon name="search" [color]="isSearchMode ? 'primary' : 'dark'"></ion-icon>
+          </button>
+        </div>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+  <ion-tabs>
+    <ion-tab [root]="breweriesList" tabTitle="Breweries List" tabIcon="search"></ion-tab>
+    <ion-tab [root]="myBreweries" tabTitle="My Breweries" tabIcon="thumbs-up"></ion-tab>
+  </ion-tabs>
+</ion-content>

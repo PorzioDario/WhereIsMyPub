@@ -1,0 +1,7 @@
+{
+  "name": "whereismypub",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

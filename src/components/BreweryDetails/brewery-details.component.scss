@@ -1,0 +1,49 @@
+app-brewery-details {
+
+  .background {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+  }
+
+  .modal {
+    background-color: #fff;
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 85%;
+    height: 85%;
+    text-align: left;
+    overflow: auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    border-radius: 5px;
+  }
+
+  .modal-content {
+    padding: 0rem;
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .breweryHeader{
+    position: relative;
+
+    .breweryName {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      background-image: linear-gradient(transparent, rgba(0,0,0,0.7) 60%);
+    }
+  }
+
+  .modal-footer {
+    margin: 5px auto;
+    width: 95%;
+  }
+}

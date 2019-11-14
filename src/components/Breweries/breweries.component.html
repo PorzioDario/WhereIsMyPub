@@ -1,0 +1,32 @@
+<ion-content padding>
+    <ion-refresher slot="fixed" #refresher (ionRefresh)="onReload($event)">
+      <ion-refresher-content
+        pullingText="Pull to refresh"
+        refreshingText="Loading...">
+      </ion-refresher-content>
+    </ion-refresher>
+
+    <div *ngIf="loading" text-center>
+      <ion-spinner></ion-spinner>
+      <ion-label>Loading...</ion-label>
+    </div>
+    <div *ngIf="!loading" class="main">
+      <ion-list *ngIf="fetchedBreweries && fetchedBreweries.length > 0">
+        <app-brewery-listitem  *ngFor="let item of fetchedBreweries" [brewery]="item" (clickBrewery)="onClickItem(item)"></app-brewery-listitem>
+      </ion-list>
+
+      <div *ngIf="!fetchedBreweries || fetchedBreweries.length === 0" class="messages-box" text-center>
+        <div *ngIf="fetchingError">
+          <img [src]="noInternet" />
+          <h2>Connection Error!</h2>
+          <ion-label>Please try again later.</ion-label>
+        </div>
+        <div *ngIf="!fetchingError">
+            <img [src]="noBottle" />
+            <h2>No breweries found!</h2>
+            <ion-label>Please try changing your search parameters.</ion-label>
+          </div>
+      </div>
+
+    </div>
+  </ion-content>

@@ -1,0 +1,11 @@
+<ion-item (click)="onClick()">
+  <ion-thumbnail item-start  >
+    <img [src]="brewery.imageURL" class="round-img">
+  </ion-thumbnail>
+  <h2>{{ brewery.name }}</h2>
+  <h3>{{ brewery.city }}</h3>
+
+  <!-- <ion-icon name="beer" color="secondary" item-start></ion-icon> -->
+
+  <ion-icon name="star" color="secondary" item-end *ngIf="brewery.favorite"></ion-icon>
+</ion-item>

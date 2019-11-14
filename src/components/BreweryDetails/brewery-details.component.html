@@ -1,0 +1,80 @@
+<ion-content class="background">
+  <div class="modal">
+
+    <ion-toolbar text-center>
+      <ion-title>
+          Brewery Details
+      </ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="dismiss()">
+            <ion-icon name="md-close" margin></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <div class="modal-content">
+
+      <div class="breweryHeader">
+        <div class="breweryName">
+          <h3 text-center>{{brewery.name}}</h3>
+          <div text-center margin>
+            <ion-badge *ngFor="let tag of brewery.tag_list" item-end>{{tag}}</ion-badge>
+          </div>
+        </div>
+
+        <ion-thumbnail class="breweryImg" item-start>
+          <img [src]="brewery.imageURL">
+        </ion-thumbnail>
+      </div>
+
+      <ion-row>
+          <ion-col col-3 text-right>
+            Type:
+          </ion-col>
+          <ion-col col-9>
+            {{brewery.brewery_type}}
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3 text-right>
+          Address:
+        </ion-col>
+        <ion-col col-9>
+          {{brewery.street}}, <br> {{brewery.city}}, {{brewery.state}}, {{brewery.postal_code}}, <br> {{brewery.country}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-3 text-right>
+            Phone:
+          </ion-col>
+          <ion-col col-9>
+            <!-- creare pipe per gestire campi vuoti -->
+            {{ brewery.phone !== '' ? brewery.phone : '-' }}
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-3 text-right>
+            Web site:
+          </ion-col>
+          <ion-col col-9>
+            <a [href]='brewery.website_url' *ngIf="brewery.website_url && brewery.website_url !== ''">{{brewery.website_url}}</a>
+            <p no-margin *ngIf="!brewery.website_url || brewery.website_url === ''">-</p>
+          </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col no-padding>
+          <app-map [lat]="brewery.latitude" [lng]="brewery.longitude"></app-map>
+        </ion-col>
+      </ion-row>
+
+    </div>
+
+    <div class="modal-footer">
+      <button ion-button block [color]="brewery.favorite ? 'primary' : 'secondary'" (click)="onToggleFavorite()">
+        <ion-icon name="thumbs-{{ brewery.favorite ? 'down' : 'up' }}"></ion-icon>
+        <ion-label>{{ brewery.favorite ? 'Remove from' : 'Add to'}} my breweries</ion-label>
+      </button>
+    </div>
+  </div>
+</ion-content>

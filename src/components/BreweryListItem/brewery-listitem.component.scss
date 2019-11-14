@@ -1,0 +1,10 @@
+app-brewery-listitem {
+  h2, h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .round-img{
+    border-radius: 20%;
+  }
+}

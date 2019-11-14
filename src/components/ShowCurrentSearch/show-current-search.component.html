@@ -1,0 +1,69 @@
+<ion-content class="background">
+  <div class="modal">
+
+    <ion-toolbar text-center>
+      <ion-title>
+          Search
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="dismiss()">
+          <ion-icon name="md-close" margin></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <div class="modal-content" text-center>
+      <h3>Current search parameters</h3>
+      <ion-row *ngIf="currentSearch.Name.trim() !== ''">
+        <ion-col col-3 text-right>
+          Name:
+        </ion-col>
+        <ion-col col-6 text-left>
+          {{currentSearch.Name}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="currentSearch.City.trim() !== ''">
+        <ion-col col-3 text-right>
+          City:
+        </ion-col>
+        <ion-col col-6 text-left>
+          {{currentSearch.City}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="currentSearch.State.trim() !== ''">
+        <ion-col col-3 text-right>
+          State:
+        </ion-col>
+        <ion-col col-6 text-left>
+          {{currentSearch.State}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-3 text-right>
+          Match:
+        </ion-col>
+        <ion-col col-6 text-left>
+          {{currentSearch.Mode === 'AND' ? 'All filters' : 'Any filter'}}
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="modal-footer">
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start color='light' block (click)="onClear()" >
+            <ion-icon name="trash"></ion-icon>
+            Clear
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start color='primary' block (click)="onNew()">
+            <ion-icon name="create"></ion-icon>
+            Edit
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+</ion-content>
